@@ -15,9 +15,16 @@ public class GameManager : MonoBehaviour
     {
         restantes = FindObjectsOfType<Moeda>().Length;
 
-        hud.text = $"MoedasR Restantes: {restantes}";
+        hud.text = $"Moedas Restantes:{restantes}";
     }
-
+    public void SubtrairMoedas(int valor)
+    {
+        restantes -= valor;
+        if (restantes <= 0)
+        {
+            msgVitoria.text = "Parabéns!";
+        }
+    }
     // Update is called once per frame
     void Update()
     {
