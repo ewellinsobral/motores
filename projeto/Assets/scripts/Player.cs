@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
     public int forcaPulo = 7;
     public bool noChao;
     private Rigidbody rb;
+    private AudioSource source;
 
     void Start()
     {
         TryGetComponent(out rb);
+        TryGetComponent(out source);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
         //pulo
         if (Input.GetKeyDown(KeyCode.Space) && noChao)
         {
+            source.Play();
+
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             noChao = false;
         }
